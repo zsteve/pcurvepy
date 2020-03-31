@@ -8,6 +8,11 @@ pip install pcurvepy
 
 Example:
 ```python
+import pandas as pd
+import matplotlib as mp
+import matplotlib.pyplot as plt
+import pcurve
+
 data = pd.read_csv('test_data.csv')
 x = data.loc[:, ('X1', 'X2')].to_numpy()
 
