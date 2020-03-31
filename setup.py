@@ -4,8 +4,8 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="pcurvepy-zsteve", # Replace with your own username
-    version="0.0.1",
+    name="pcurvepy", # Replace with your own username
+    version="0.0.10",
     author="Stephen Zhang",
     author_email="syz@math.ubc.ca",
     description="Principal curves implementation in Python",
