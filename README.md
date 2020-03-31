@@ -1,6 +1,11 @@
 # pcurvepy
 ### Principal curves implementation (Hastie '89) in Python
 
+Installation:
+```
+pip install pcurvepy
+```
+
 Example:
 ```python
 data = pd.read_csv('test_data.csv')
