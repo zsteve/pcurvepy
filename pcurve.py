@@ -67,7 +67,7 @@ class PrincipalCurve:
             s_interp = s_interp[order]
             X = X[order, :]
 
-            spline = [UnivariateSpline(s_interp, X[:, j], k = 3) for j in range(0, X.shape[1])]
+            spline = [UnivariateSpline(s_interp, X[:, j], k = self.k, w = w) for j in range(0, X.shape[1])]
 
             p = np.zeros((len(s_interp), X.shape[1]))
             for j in range(0, X.shape[1]):
