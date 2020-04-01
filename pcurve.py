@@ -45,10 +45,11 @@ class PrincipalCurve:
         s = s/sum(seg_lens)
         return s
         
-    def fit(self, X, w = None, max_iter = 10, tol = 1e-3):
+    def fit(self, X, p = None, w = None, max_iter = 10, tol = 1e-3):
         '''
         Fit principal curve to data
         @param X: data
+        @param p: starting curve (optional)
         @param w: data weights (optional)
         @param max_iter: maximum number of iterations 
         @param tol: tolerance for stopping condition
@@ -57,10 +58,10 @@ class PrincipalCurve:
         pca = sklearn.decomposition.PCA(n_components = X.shape[1])
         pca.fit(X)
         pc1 = pca.components_[:, 0]
-        
-        p = np.kron(np.dot(X, pc1)/np.dot(pc1, pc1), pc1).reshape(X.shape) # starting point for iteration
-        order = np.argsort([np.linalg.norm(p[0, :] - p[i, :]) for i in range(0, p.shape[0])])
-        p = p[order]
+        if p == None:
+            p = np.kron(np.dot(X, pc1)/np.dot(pc1, pc1), pc1).reshape(X.shape) # starting point for iteration
+            order = np.argsort([np.linalg.norm(p[0, :] - p[i, :]) for i in range(0, p.shape[0])])
+            p = p[order]
         s = self.renorm_parameterisation(p)
         d_sq_old = np.Inf
         
